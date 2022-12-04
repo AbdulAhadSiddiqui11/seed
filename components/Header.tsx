@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 
 import { Category } from '../types';
+import { NextPage } from 'next';
 
 const categories: Category[] = [
     { name: 'React', slug: 'react' },
@@ -9,7 +10,7 @@ const categories: Category[] = [
     { name: 'Tailwind', slug: 'tailwind' },
 ]
 
-const Header = () => {
+const Header: NextPage = () => {
     return (
         <div className='container mx-auto px-10 mb-8'>
             <div className='border-b w-full inline-block border-[#03DAC6] py-8'>

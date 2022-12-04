@@ -1,6 +1,7 @@
+import { NextPage } from 'next';
 import React from 'react';
 
-const PostWidget = () => {
+const PostWidget: NextPage = () => {
     return (
         <div>PostWidget</div>
     )
