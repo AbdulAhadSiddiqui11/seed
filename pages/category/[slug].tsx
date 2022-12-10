@@ -42,7 +42,7 @@ export default CategoryPost;
 export async function getStaticProps({ params }: { params: { slug: string } }) {
     const posts: Post[] = await getCategoryPost(params.slug);
 
-    if (!posts || posts.length === 0) return {
+    if (!posts) return {
         notFound: true,
     }
 
