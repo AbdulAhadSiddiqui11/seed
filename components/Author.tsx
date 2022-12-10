@@ -17,7 +17,7 @@ const Author: NextPage<AuthorProps> = ({ author }) => {
                     unoptimized
                     height='115'
                     width='115'
-                    className='align-middle rounded-full'
+                    className='align-middle rounded-full border-2'
                     src={author.photo.url}
                 />
             </div>
