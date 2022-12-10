@@ -23,7 +23,7 @@ const Categories: NextPage = () => {
                     key={category.slug}
                     href={`/category/${category.slug}`}
                 >
-                    <span className='cursor-pointer block pb-3 mb-3 text-white'>
+                    <span className='transition duration-200 transform hover:-translate-y-1 cursor-pointer block pb-3 mb-3 text-white'>
                         {category.name}
                     </span>
                 </Link>
