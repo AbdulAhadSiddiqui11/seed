@@ -34,14 +34,16 @@ const CommentsForm: NextPage<CommentsFormProps> = ({ slug }) => {
         submitComment(commentData)
             .then((res) => {
                 setShowSuccessMessage(true);
+                setDisableButton(true);
                 setTimeout(() => {
                     setShowSuccessMessage(false);
-                }, 3000);
+                    setDisableButton(false);
+                }, 5000);
             });
     }
 
     const [error, setError] = useState(false);
-    const [localStorage, setLocalStorage] = useState(null);
+    const [disableButton, setDisableButton] = useState(false);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const commentElement = useRef<HTMLTextAreaElement>(null);
@@ -100,11 +102,12 @@ const CommentsForm: NextPage<CommentsFormProps> = ({ slug }) => {
                 <button
                     type='button'
                     onClick={handleCommentSubmission}
+                    disabled={disableButton}
                     className='transition duration-500 ease hover:bg-[#03DAC6] text-black inline-block bg-[#018786] text-lg rounded-full px-8 py-3 cursor-pointer'
                 >
                     Post Comment
                 </button>
-                {showSuccessMessage && <span className='text-xl float-right font-semibold mt-3 text-green-500'>Comment submitted for review</span>}
+                {showSuccessMessage && <span className='animate-bounce text-xl float-right font-semibold text-green-500 mt-3 mr-2'>Comment submitted for review</span>}
             </div>
         </div>
     );
