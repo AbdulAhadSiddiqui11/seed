@@ -10,7 +10,8 @@ const Categories: NextPage = () => {
 
     useEffect(() => {
         getCategories()
-            .then((result) => setCategories(result));
+            .then((result) => setCategories(result))
+            .catch((error) => console.error(error));
     }, []);
 
     return (

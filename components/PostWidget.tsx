@@ -16,10 +16,12 @@ const PostWidget: NextPage<PostWidgetProps> = ({ categories, slug }) => {
     useEffect(() => {
         if (slug && categories) {
             getSimilarPosts(categories, slug)
-                .then((result) => setRelatedPosts(result));
+                .then((result) => setRelatedPosts(result))
+                .catch((error) => console.error(error));
         } else {
             getRecentPosts()
-                .then((result) => setRelatedPosts(result));
+                .then((result) => setRelatedPosts(result))
+                .catch((error) => console.error(error));
         }
     }, [slug]);
 
