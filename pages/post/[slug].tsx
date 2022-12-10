@@ -1,8 +1,9 @@
 import { NextPage } from 'next'
 import React from 'react'
+import { useRouter } from 'next/router';
 
 import { getPosts, getPostDetails } from '../../services';
-import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm } from '../../components';
+import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm, Loader } from '../../components';
 import { Post } from '../../types/post';
 import { PostDetailInterface } from '../../types/postDetails';
 
@@ -11,6 +12,12 @@ interface PostDetailsProps {
 }
 
 const PostDetails: NextPage<PostDetailsProps> = ({ post }) => {
+    const router = useRouter();
+
+    if (router.isFallback) {
+        return <Loader />;
+    }
+
     return (
         <div className='text-white container mx-auto px-10 mb-8'>
             <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
@@ -34,7 +41,11 @@ const PostDetails: NextPage<PostDetailsProps> = ({ post }) => {
 export default PostDetails;
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
-    const data = await getPostDetails(params.slug);
+    const data: PostDetailInterface = await getPostDetails(params.slug);
+
+    if (!data) return {
+        notFound: true,
+    }
 
     return {
         props: {
@@ -52,6 +63,6 @@ export async function getStaticPaths() {
                 slug: post.node.slug,
             },
         })),
-        fallback: false,
+        fallback: true,
     };
 }
