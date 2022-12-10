@@ -18,7 +18,7 @@ const Header: NextPage = () => {
     return (
         <div className='container mx-auto px-10 mb-8'>
             <div className='border-b w-full inline-block border-[#03DAC6] py-8'>
-                <div className='md:float-left block'>
+                <div className='flex items-center justify-center md:float-left'>
                     <Link href='/'>
                         <span className='cursor-pointer font-bold text-4xl text-white'>
                             {'<Seed /> '}
