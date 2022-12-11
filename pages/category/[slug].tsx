@@ -36,6 +36,7 @@ const CategoryPost: NextPage<CategoryPostProps> = ({ posts }) => {
         </div>
     );
 };
+
 export default CategoryPost;
 
 // Fetch data at build time
@@ -48,6 +49,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 
     return {
         props: { posts },
+        revalidate: 10,
     };
 }
 
@@ -55,8 +57,11 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 // The HTML is generated at build time and will be reused on each request.
 export async function getStaticPaths() {
     const categories = await getCategories();
+
+    const paths = categories.map(({ slug }: { slug: string }) => ({ params: { slug } }));
+
     return {
-        paths: categories.map(({ slug }: { slug: string }) => ({ params: { slug } })),
-        fallback: true,
+        paths,
+        fallback: 'blocking',
     };
 }

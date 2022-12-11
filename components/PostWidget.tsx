@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import Link from 'next/link';
 
-import { getRecentPosts, getSimilarPosts } from '../services';
+import { getCategories, getRecentPosts, getSimilarPosts } from '../services';
 import { RecentPost } from '../types/recentPost'; // This is the type for the RecentPost/RelatedPost interface
 interface PostWidgetProps {
     categories?: string[];
@@ -12,7 +12,7 @@ interface PostWidgetProps {
 
 const PostWidget: NextPage<PostWidgetProps> = ({ categories, slug }) => {
     const [relatedPosts, setRelatedPosts] = useState([]);
-
+    console.log(getCategories);
     useEffect(() => {
         if (slug && categories) {
             getSimilarPosts(categories, slug)

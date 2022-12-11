@@ -122,6 +122,7 @@ export const getCategories = async () => {
         }
     `
     const result = await request(graphqlAPI, query);
+    //console.log(result.categories, "From categories");
     return result.categories;
 }
 
