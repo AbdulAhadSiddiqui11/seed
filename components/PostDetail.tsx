@@ -35,13 +35,16 @@ const PostDetail: NextPage<PostDetailProps> = ({ post }) => {
                 return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item: any, i: number) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
             case 'image':
                 return (
-                    <img
-                        key={index}
-                        alt={obj.title}
-                        height={obj.height}
-                        width={obj.width}
-                        src={obj.src}
-                    />
+                    <div className='flex justify-center items-center'>
+                        <img
+                            key={index}
+                            alt={obj.title}
+                            height={obj.height}
+                            width={obj.width}
+                            src={obj.src}
+                            className='rounded-lg'
+                        />
+                    </div>
                 );
             default:
                 return modifiedText;
@@ -81,11 +84,13 @@ const PostDetail: NextPage<PostDetailProps> = ({ post }) => {
                     </div>
                 </div>
                 <h1 className='mb-8 text-3xl font-semibold text-white'>{post.title}</h1>
-                {post.content.raw.children.map((typeObj: Child, index: number) => {
-                    const children: any = typeObj.children.map((item: Child2, itemindex: number) => getContentFragment(itemindex, item.text, item));
+                <div className='text-justify'>
+                    {post.content.raw.children.map((typeObj: Child, index: number) => {
+                        const children: any = typeObj.children.map((item: Child2, itemindex: number) => getContentFragment(itemindex, item.text, item));
 
-                    return getContentFragment(index, children, typeObj, typeObj.type);
-                })}
+                        return getContentFragment(index, children, typeObj, typeObj.type);
+                    })}
+                </div>
             </div>
         </div>
     )

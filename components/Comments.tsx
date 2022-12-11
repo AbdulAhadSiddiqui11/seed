@@ -40,7 +40,7 @@ const Comments: NextPage<CommentsProps> = ({ slug }) => {
                                     {moment(comment.createdAt).format('MMMM Do YYYY, h:mm A')}
                                 </span>
                             </p>
-                            <p className='whitespace-pre-line text-gray-200 w-full'>
+                            <p className='whitespace-pre-line text-gray-200 w-full text-justify'>
                                 {parse(comment.comment)}
                             </p>
                         </div>
