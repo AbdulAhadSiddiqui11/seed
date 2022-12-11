@@ -12,7 +12,7 @@ interface PostWidgetProps {
 
 const PostWidget: NextPage<PostWidgetProps> = ({ categories, slug }) => {
     const [relatedPosts, setRelatedPosts] = useState([]);
-    console.log(getCategories);
+    //console.log(getCategories);
     useEffect(() => {
         if (slug && categories) {
             getSimilarPosts(categories, slug)
