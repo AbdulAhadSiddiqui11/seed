@@ -37,7 +37,8 @@ export async function getStaticProps() {
   const postNodes = (await getPosts()) || [];
   return {
     props: {
-      postNodes,
+      // sort post notes by date in descending order
+      postNodes: postNodes.reverse(),
     },
     revalidate: 60,
   };
