@@ -13,7 +13,13 @@
 
 </div>
 
-<h2 align="center">Seed is deployed and live, click <a href="https://seed-neon.vercel.app/" target="_blank" >here</a> and check it out now! </h2>
+<h2 align="center">Seed is deployed and live, click <a href="https://www.seed.abdulahadsiddiqui.com/" target="_blank" >here</a> and check it out now! </h2>
+
+<p align="center">
+  <a href="https://www.seed.abdulahadsiddiqui.com/" target="_blank"> 
+    <img src="https://github.com/AbdulAhadSiddiqui11/seed/blob/main/static/seed-home.png" alt="Seed Home">
+  </a>
+</p>
 
 <h4 align="center"> <em> Seed is a general purpose blogging app with blazing fast page renders by utilizing <a href="https://nextjs.org/docs/basic-features/pages#static-generation" target="_blank"> SSG </a> and it also keep your content up to date with <a href="https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration" target="_blank"> ISR. </a> The deployed version utilizes <strong> Seed </strong> as a Software Engineering blog but you can customize it for your usecase </em></h4>
   
@@ -66,7 +72,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID = < YOUR GOOGLE ANALYTICS MEASUREMENT ID >
 npm install
 < or >
 yarn install
-< or>
+< or >
 pnpm install
 ```
 
@@ -106,7 +112,7 @@ next build
 npm install
 < or >
 yarn install
-< or>
+< or >
 pnpm install
 ```
 * Congratulations your Seed app is up and running!
