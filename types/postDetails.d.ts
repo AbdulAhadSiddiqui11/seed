@@ -12,10 +12,16 @@ export interface Author {
     photo: Photo;
 }
 
+export interface Child3 {
+    code?: boolean
+    text: string
+}
+
 export interface Child2 {
     text: string;
     bold?: boolean;
     italic?: boolean;
+    children?: Children3[]
 }
 
 export interface Child {

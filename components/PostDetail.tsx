@@ -1,8 +1,8 @@
 import { NextPage } from 'next'
-import React from 'react'
+import React from 'react';
 import moment from 'moment';
 
-import { PostDetailInterface, Child, Child2 } from '../types/postDetails';
+import { PostDetailInterface, Child, Child2, Child3 } from '../types/postDetails';
 
 interface PostDetailProps {
     post: PostDetailInterface;
@@ -46,6 +46,17 @@ const PostDetail: NextPage<PostDetailProps> = ({ post }) => {
                         />
                     </div>
                 );
+            case 'code-block':
+                return (
+                    <div>
+                        <pre key={index} className="bg-gray-800 text-white rounded-md p-4 my-6 overflow-x-auto">
+                            <code>{text.map((child: Child3, childIndex: number) => (
+                                <React.Fragment key={childIndex}>{child.code ? child.text : <br />}</React.Fragment>
+                            ))}</code>
+                        </pre>
+                    </div>
+
+                );
             default:
                 return modifiedText;
         }
@@ -86,6 +97,13 @@ const PostDetail: NextPage<PostDetailProps> = ({ post }) => {
                 <h1 className='mb-8 text-3xl font-semibold text-white'>{post.title}</h1>
                 <div className='text-justify'>
                     {post.content.raw.children.map((typeObj: Child, index: number) => {
+                        if (typeObj.type === 'code-block') {
+                            return (
+                                typeObj.children.map((item: Child2, itemindex: number) => {
+                                    return getContentFragment(itemindex, item.children, item, typeObj.type);
+                                })
+                            )
+                        }
                         const children: any = typeObj.children.map((item: Child2, itemindex: number) => getContentFragment(itemindex, item.text, item));
 
                         return getContentFragment(index, children, typeObj, typeObj.type);
