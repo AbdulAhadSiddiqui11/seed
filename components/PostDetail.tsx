@@ -9,6 +9,7 @@ interface PostDetailProps {
 }
 
 const PostDetail: NextPage<PostDetailProps> = ({ post }) => {
+    console.log(post);
     const getContentFragment = (index: number, text: any, obj: any, type: string = ""): any => {
         let modifiedText = text;
 
@@ -23,6 +24,9 @@ const PostDetail: NextPage<PostDetailProps> = ({ post }) => {
 
             if (obj.underline) {
                 modifiedText = (<u key={index}>{text}</u>);
+            }
+            if (obj.code) {
+                modifiedText = (<pre key={index} className="bg-[#605a70] text-white rounded-md px-1 inline-block whitespace-pre-wrap"><code><em>{text}</em></code></pre>);
             }
         }
 
